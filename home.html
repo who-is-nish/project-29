@@ -81,7 +81,8 @@
       const isPaused = localStorage.getItem("musicPaused") === "true";
 
       toggleBtn.textContent = isPaused ? "▶ Click" : "⏸ Pause";
-
+      // ❌ REMOVE THIS
+      if (musicAllowed && !isPaused) music.play().catch(()=>{});
 
       setInterval(() => {
         if (!music.paused) localStorage.setItem("musicTime", music.currentTime);
