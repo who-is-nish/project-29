@@ -1,0 +1,374 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.night-bg {
+  height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  padding: 40px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+.countdown {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  font-weight: bold;
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+p {
+  margin-bottom: 25px;
+  font-size: 1.05rem;
+  opacity: 0.9;
+  transition: opacity 1s;
+}
+
+.enter-btn { 
+  display: none; /* display: inline-block; */ 
+  padding: 12px 28px; 
+  font-size: 1rem; 
+  border: none; 
+  border-radius: 30px; 
+  background: #ff4d6d; 
+  color: white; 
+  cursor: pointer; 
+  transition: 0.3s; 
+  animation: glow 1.5s 
+  infinite alternate; } 
+  .enter-btn:hover { transform: scale(1.08); background: #ff1f4a; }
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px #ff4d6d; }
+  100% { box-shadow: 0 0 20px #ff1f4a; }
+}
+
+.memory {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 15px 20px;
+  border-radius: 15px;
+  margin: 12px 0;
+  font-size: 1.05rem;
+  backdrop-filter: blur(8px);
+}
+
+/* extra delay */
+.delay-4 { animation-delay: 2s; }
+
+
+
+.fade-in {
+  opacity: 0;
+  animation: fadeUp 1s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.5s; }
+.delay-2 { animation-delay: 1s; }
+.delay-3 { animation-delay: 1.5s; }
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.show-btn {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+
+.letter-container {
+  text-align: left;
+}
+
+.letter {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 18px 0;
+  opacity: 0.95;
+}
+
+.signature {
+  text-align: right;
+  font-style: italic;
+  margin-top: 25px;
+}
+
+
+
+/* 🎆 Finale extras */
+
+.finale-bg {
+  overflow: hidden;
+}
+
+.finale-container {
+  z-index: 2;
+}
+
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confetti {
+  position: absolute;
+  top: -10px;
+  width: 8px;
+  height: 14px;
+  background: #ff4d6d;
+  animation: fall linear infinite;
+  opacity: 0.9;
+}
+
+.confetti:nth-child(odd) {
+  background: #ffd166;
+}
+
+.confetti:nth-child(even) {
+  background: #4cc9f0;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+
+/* 🎈 Balloons */
+.balloon-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.balloon {
+  position: absolute;
+  bottom: -60px;
+  font-size: 2rem;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-120vh);
+  }
+}
+
+
+/* 🎉 Party Emojis */
+.emoji-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.party-emoji {
+  position: absolute;
+  top: -20px;
+  font-size: 1.8rem;
+  animation: fallEmoji linear infinite;
+}
+
+@keyframes fallEmoji {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+/* 🌸 Flowers */
+.flower-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.flower {
+  position: absolute;
+  top: -20px;
+  font-size: 1.6rem;
+  animation: fallFlower linear infinite;
+}
+
+@keyframes fallFlower {
+  to {
+    transform: translateY(110vh) rotate(180deg);
+  }
+}
+
+/* ⭐ Stars */
+.star-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  top: -10px;
+  font-size: 1.2rem;
+  opacity: 0.8;
+  animation: twinkle linear infinite;
+}
+
+@keyframes twinkle {
+  to {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+.memory-scroll-container {
+  max-height: 70vh;        /* 70% of viewport height */
+  overflow-y: auto;        /* vertical scroll */
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1); /* subtle transparent bg */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Optional: nicer scrollbar for webkit browsers */
+.memory-scroll-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.memory-scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.memory-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+.music-btn {
+   display: inline-block; 
+  padding: 12px 28px; 
+  font-size: 1rem; 
+  border: none; 
+  border-radius: 30px; 
+  background: #ff4d6d; 
+  color: white; 
+  cursor: pointer; 
+  transition: 0.3s; 
+  animation: glow 1.5s 
+  infinite alternate; } 
+  .music-btn:hover { transform: scale(1.08); background: #ff1f4a; }
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px #ff4d6d; }
+  100% { box-shadow: 0 0 20px #ff1f4a; }
+}
+
+
+
+
+.qa-box {
+  margin: 20px 0 10px;
+}
+
+.qa-question {
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+  opacity: 0.95;
+}
+
+.qa-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.qa-btn {
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.15);
+  color: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  backdrop-filter: blur(6px);
+  transition: all 0.3s ease;
+}
+
+.qa-btn:hover {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.05);
+}
+/* 📸 Memory blocks */
+.memory-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 🖼️ Fix image display */
+.memory-photo {
+  width: 100%;
+  max-width: 250px;   /* keeps it neat inside container */
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* 📱 Make container wider for images */
+.container {
+  max-width: 600px;   /* increase from 420px */
+}

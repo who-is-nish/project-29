@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Memories 💫</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="night-bg">
+<div class="flower-container"></div>
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+  <div class="container">
+    <h1 class="fade-in">Some Special Moments 💫</h1>
+<div class="memory-scroll-container">
+  <div class="memory-block fade-in delay-1">
+    <div class="memory-text">Special Bhatura</div>
+    <img src="photo1.jpeg" alt="Laughs Memory" class="memory-photo">
+  </div>
+
+  <div class="memory-block fade-in delay-2">
+    <div class="memory-text">🌸 The laughs we never planned</div>
+    <img src="photo2.jpeg" alt="Moments Memory" class="memory-photo">
+  </div>
+
+  <div class="memory-block fade-in delay-3">
+    <div class="memory-text">💕 And the bond that keeps getting stronger</div>
+    <img src="photo3.jpeg" alt="Bond Memory" class="memory-photo">
+  </div>
+
+  <!-- Add more memory-blocks as needed -->
+</div>
+
+
+    <button class="enter-btn show-btn fade-in delay-4"
+            onclick="goNext()">
+      Jaari Rakhe -->
+    </button>
+  </div>
+
+  <script>
+    /* 🔐 PAGE LOCK — BLOCK BEFORE MIDNIGHT */
+    function isUnlocked() {
+      const now = new Date();
+      const midnight = new Date();
+      midnight.setHours(0, 0, 0, 0);
+      return now >= midnight;
+    }
+
+    // if (!isUnlocked()) {
+    //   window.location.href = "index.html";
+    // }
+
+    function goNext() {
+      window.location.href = "letter.html";
+    }
+    const flowerContainer = document.querySelector(".flower-container");
+const flowers = ["🌸", "🌺", "🌼", "🌷"];
+
+for (let i = 0; i < 25; i++) {
+  const f = document.createElement("span");
+  f.className = "flower";
+  f.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+  f.style.left = Math.random() * 100 + "vw";
+  f.style.animationDuration = 4 + Math.random() * 5 + "s";
+  f.style.animationDelay = Math.random() * 5 + "s";
+  flowerContainer.appendChild(f);
+}
+
+const music = document.getElementById("bgMusic");
+const musicTime = localStorage.getItem("musicTime");
+
+if (localStorage.getItem("musicPlaying") === "true") {
+    if (musicTime) {
+        music.currentTime = parseFloat(musicTime);
+    }
+    music.play().catch(() => {});
+}
+
+// Save current time before leaving
+window.addEventListener("beforeunload", () => {
+    localStorage.setItem("musicTime", music.currentTime);
+});
+
+  </script>
+
+</body>
+</html>

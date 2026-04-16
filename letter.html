@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chota sa Lettterr</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="night-bg">
+<div class="star-container"></div>
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+  <div class="container letter-container">
+    <h1 class="fade-in">Sirf Aapke Liye 🫵🏽</h1>
+
+    <p class="letter fade-in delay-1">
+      I don’t say this enough, but you truly mean a lot to me.
+      Your Pagalpan, your Bhaturi, even the kacha and pakka bhatura
+      you do make a bigger difference than you realize.
+    </p>
+
+    <p class="letter fade-in delay-2">
+      On your birthday, I just want you to remember that
+      you are appreciated, valued, and never alone.
+      Cant thank you enough bro for the things you have done for me but yeah...
+      I’m always rooting for you — today and always 💖
+
+    </p>
+
+    <p class="letter fade-in delay-3 signature">
+      — From your choti bhai
+    </p>
+
+    <button class="enter-btn show-btn fade-in delay-4"
+            onclick="goNext()">
+      Final Surprise 🎁
+    </button>
+  </div>
+
+  <script>
+    /* 🔐 PAGE LOCK — BLOCK BEFORE MIDNIGHT */
+    function isUnlocked() {
+      const now = new Date();
+      const midnight = new Date();
+      midnight.setHours(0, 0, 0, 0);
+      return now >= midnight;
+    }
+
+    // if (!isUnlocked()) {
+    //   window.location.href = "index.html";
+    // }
+
+    function goNext() {
+      window.location.href = "finale.html";
+    }
+    const starContainer = document.querySelector(".star-container");
+const stars = ["⭐", "✨", "🌟"];
+
+for (let i = 0; i < 35; i++) {
+  const s = document.createElement("span");
+  s.className = "star";
+  s.textContent = stars[Math.floor(Math.random() * stars.length)];
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.animationDuration = 5 + Math.random() * 6 + "s";
+  s.style.animationDelay = Math.random() * 6 + "s";
+  starContainer.appendChild(s);
+}
+
+const music = document.getElementById("bgMusic");
+const musicTime = localStorage.getItem("musicTime");
+
+if (localStorage.getItem("musicPlaying") === "true") {
+    if (musicTime) {
+        music.currentTime = parseFloat(musicTime);
+    }
+    music.play().catch(() => {});
+}
+
+// Save current time before leaving
+window.addEventListener("beforeunload", () => {
+    localStorage.setItem("musicTime", music.currentTime);
+});
+
+  </script>
+
+</body>
+</html>

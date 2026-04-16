@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="night-bg">
+    <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="emoji-container"></div>
+  <div class="container">
+    <h1 class="fade-in">Janmdin Mubarak 🎂</h1>
+
+    <p class="fade-in delay-1">
+      Today is all about you 💕  
+      I hope this day brings you endless smiles, laughter,
+      and everything your heart wishes for ✨
+    </p>
+
+    <p class="fade-in delay-2">
+      Thank you for being the Jupiter of my life.
+    </p>
+
+    <button class="enter-btn show-btn fade-in delay-3"
+            onclick="goNext()">
+      NIXT🥂 ➜
+    </button>
+  </div>
+
+  <script>
+
+    /* 🔐 PAGE LOCK — BLOCK BEFORE MIDNIGHT */
+    function isUnlocked() {
+      const now = new Date();
+      const midnight = new Date();
+      midnight.setHours(0, 0, 0, 0);
+      return now >= midnight;
+    }
+
+    // if (!isUnlocked()) {
+    //   window.location.href = "index.html";
+    // }
+
+    function goNext() {
+      window.location.href = "memories.html";
+    }
+    const emojiContainer = document.querySelector(".emoji-container");
+const partyEmojis = ["🎉", "🎊", "🥳", "🎂", "✨"];
+
+for (let i = 0; i < 30; i++) {
+  const e = document.createElement("span");
+  e.className = "party-emoji";
+  e.textContent = partyEmojis[Math.floor(Math.random() * partyEmojis.length)];
+  e.style.left = Math.random() * 100 + "vw";
+  e.style.animationDuration = 3 + Math.random() * 4 + "s";
+  e.style.animationDelay = Math.random() * 5 + "s";
+  emojiContainer.appendChild(e);
+}
+
+const music = document.getElementById("bgMusic");
+const musicTime = localStorage.getItem("musicTime");
+
+if (localStorage.getItem("musicPlaying") === "true") {
+    if (musicTime) {
+        music.currentTime = parseFloat(musicTime);
+    }
+    music.play().catch(() => {});
+}
+
+// Save current time before leaving
+window.addEventListener("beforeunload", () => {
+    localStorage.setItem("musicTime", music.currentTime);
+});
+
+
+  </script>
+
+</body>
+</html>
