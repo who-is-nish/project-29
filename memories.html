@@ -71,16 +71,30 @@ for (let i = 0; i < 25; i++) {
 }
 
 const music = document.getElementById("bgMusic");
-const musicTime = localStorage.getItem("musicTime");
 
-if (localStorage.getItem("musicPlaying") === "true") {
-    if (musicTime) {
-        music.currentTime = parseFloat(musicTime);
+window.addEventListener("load", () => {
+    const savedTime = localStorage.getItem("musicTime");
+    const isPaused = localStorage.getItem("musicPaused") === "true";
+    const allowed = localStorage.getItem("musicAllowed") === "true";
+
+    if (savedTime) {
+        music.currentTime = parseFloat(savedTime);
     }
-    music.play().catch(() => {});
-}
 
-// Save current time before leaving
+    // Resume only if user had already started it
+    if (allowed && !isPaused) {
+        music.play().catch(() => {});
+    }
+});
+
+// Keep saving time continuously
+setInterval(() => {
+    if (!music.paused) {
+        localStorage.setItem("musicTime", music.currentTime);
+    }
+}, 500);
+
+// Save on exit (extra safety)
 window.addEventListener("beforeunload", () => {
     localStorage.setItem("musicTime", music.currentTime);
 });
